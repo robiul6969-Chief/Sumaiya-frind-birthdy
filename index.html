@@ -162,6 +162,7 @@ button:hover {
 }
 
 .card {
+  width: 100%;
   max-width: 650px;
   margin: 25px auto;
   padding: clamp(22px, 5vw, 38px);
@@ -261,12 +262,13 @@ button:hover {
 
 .memory-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin: 30px auto;
 }
 
 .memory {
+  min-width: 0;
   padding: 22px 12px;
   border: 1px solid #d4af3730;
   border-radius: 16px;
@@ -286,6 +288,7 @@ button:hover {
 .message {
   white-space: pre-line;
   text-align: left;
+  overflow-wrap: break-word;
 }
 
 footer {
@@ -300,9 +303,31 @@ footer {
 footer span { color: var(--gold); }
 
 @media(max-width: 560px) {
-  .memory-grid { grid-template-columns: 1fr; }
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+
   .memory { padding: 20px; }
-  section { padding: 70px 18px; }
+
+  section {
+    padding: 70px 18px;
+  }
+
+  .container {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .card {
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  .message {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+  }
 }
 
 @media(prefers-reduced-motion: reduce) {
@@ -442,7 +467,15 @@ Sumaiya ❤️</p>
       ONE MORE THING ↓
     </button>
   </div>
+</section>
 
+<!-- CHAPTER 03: DUA -->
+<section id="dua">
+  <div class="container">
+    <div class="eyebrow">CHAPTER 03 · A LITTLE PRAYER</div>
+
+    <div class="card">
+      <p>
         <br><br>
         May Allah protect you, guide you, and bless
         your future with happiness and success.
@@ -486,7 +519,6 @@ Sumaiya ❤️</p>
         আমার এই ছোট্ট সারপ্রাইজটা তোমার কেমন লাগল,
         সেটা জানি না। তবে এটা বানানোর পেছনে
         আমার উদ্দেশ্য ছিল তোমার মুখে একটু হাসি ফোটানো। আর অবাক করে দেওয়া 😁
-
 
         আশা করি, কোনো একদিন এটা দেখে তোমার
         আজকের দিনটার কথা মনে পড়বে আর তুমি হাসবে।
@@ -565,10 +597,13 @@ Sumaiya ❤️</p>
 <script>
 /* Smooth scrolling */
 function goTo(id) {
-  document.getElementById(id).scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
 }
 
 /* Golden stars */
@@ -577,27 +612,27 @@ const sctx = starCanvas.getContext('2d');
 let stars = [];
 
 function resizeStars() {
-  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-  starCanvas.width = innerWidth * dpr;
-  starCanvas.height = innerHeight * dpr;
-  starCanvas.style.width = innerWidth + 'px';
-  starCanvas.style.height = innerHeight + 'px';
+  starCanvas.width = window.innerWidth * dpr;
+  starCanvas.height = window.innerHeight * dpr;
+  starCanvas.style.width = window.innerWidth + 'px';
+  starCanvas.style.height = window.innerHeight + 'px';
 
   sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   stars = Array.from({
-    length: Math.min(100, Math.floor(innerWidth / 4))
+    length: Math.min(100, Math.floor(window.innerWidth / 4))
   }, () => ({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight,
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
     r: Math.random() * 1.4 + .3,
     phase: Math.random() * 6
   }));
 }
 
 function drawStars() {
-  sctx.clearRect(0, 0, innerWidth, innerHeight);
+  sctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
   stars.forEach(s => {
     s.phase += .025;
@@ -622,11 +657,11 @@ let pieces = [];
 let confettiRunning = false;
 
 function resizeConfetti() {
-  const dpr = Math.min(devicePixelRatio || 1, 2);
-  canvas.width = innerWidth * dpr;
-  canvas.height = innerHeight * dpr;
-  canvas.style.width = innerWidth + 'px';
-  canvas.style.height = innerHeight + 'px';
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  canvas.style.width = window.innerWidth + 'px';
+  canvas.style.height = window.innerHeight + 'px';
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
@@ -635,8 +670,8 @@ resizeConfetti();
 
 function celebrate() {
   pieces = Array.from({length: 140}, () => ({
-    x: Math.random() * innerWidth,
-    y: -Math.random() * innerHeight,
+    x: Math.random() * window.innerWidth,
+    y: -Math.random() * window.innerHeight,
     size: Math.random() * 5 + 3,
     speed: Math.random() * 3 + 2,
     drift: (Math.random() - .5) * 2,
@@ -654,7 +689,7 @@ function celebrate() {
 }
 
 function drawConfetti() {
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
   pieces.forEach(p => {
     p.y += p.speed;
@@ -669,13 +704,13 @@ function drawConfetti() {
     ctx.restore();
   });
 
-  pieces = pieces.filter(p => p.y < innerHeight + 20);
+  pieces = pieces.filter(p => p.y < window.innerHeight + 20);
 
   if (pieces.length) {
     requestAnimationFrame(drawConfetti);
   } else {
     confettiRunning = false;
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
   }
 }
 
@@ -816,4 +851,4 @@ document.getElementById('musicBtn')
 </script>
 
 </body>
-  </html>
+      </html>
