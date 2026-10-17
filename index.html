@@ -1,1 +1,851 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<title>Happy Birthday Sojib 🎂</title>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+
+:root {
+  --gold: #e8c76a;
+  --gold2: #fff0b0;
+  --black: #050505;
+  --muted: #c6bdab;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: #fff;
+  font-family: 'Poppins', 'Noto Sans Bengali', sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 50% 0%, #352710, transparent 45%),
+    radial-gradient(ellipse at 0% 100%, #171006, transparent 45%),
+    #050505;
+}
+
+#stars, #confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#stars { z-index: -1; }
+#confetti { z-index: 20; }
+
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 30;
+  border: 1px solid #d4af3770;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  color: var(--gold);
+  background: #17130b;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+section {
+  padding: 85px 18px;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero { min-height: 100svh; }
+
+.container {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: clamp(42px, 10vw, 80px);
+  line-height: 1.15;
+  background: linear-gradient(120deg, #fff5c6, #d4af37, #fff0b0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+h2 {
+  color: var(--gold2);
+  font-size: clamp(27px, 6vw, 42px);
+  margin-bottom: 18px;
+}
+
+h3 { color: var(--gold); }
+
+p {
+  color: #e4ddcf;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 20px auto 30px;
+  max-width: 540px;
+}
+
+.gold { color: var(--gold2); }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  padding: 13px 22px;
+  margin: 10px 5px;
+  background: linear-gradient(120deg, #fff0b0, #d4af37);
+  color: #171106;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  transition: .3s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px #d4af3750;
+}
+
+.outline {
+  background: transparent;
+  color: var(--gold);
+}
+
+.small {
+  font-size: 11px;
+  color: #8f8776;
+  margin-top: 20px;
+}
+
+.card {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: clamp(22px, 5vw, 38px);
+  background: linear-gradient(145deg, #19160f, #0b0b0b);
+  border: 1px solid #d4af3740;
+  border-radius: 22px;
+  box-shadow: 0 15px 55px #0008;
+}
+
+.card p { text-align: left; }
+
+.divider {
+  height: 1px;
+  max-width: 100px;
+  margin: 25px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.emoji {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.gift {
+  position: relative;
+  width: 150px;
+  height: 130px;
+  margin: 35px auto;
+  cursor: pointer;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.gift-base {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  width: 140px;
+  height: 90px;
+  background: linear-gradient(120deg, #a77b19, #f5db80, #987015);
+  border-radius: 5px;
+}
+
+.gift-base::before {
+  content: "";
+  position: absolute;
+  left: 55px;
+  width: 30px;
+  height: 100%;
+  background: #fff0b0;
+}
+
+.gift-lid {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  width: 150px;
+  height: 28px;
+  border-radius: 5px;
+  background: linear-gradient(120deg, #d4af37, #fff0b0, #b88d25);
+  transform-origin: left bottom;
+  transition: transform .8s;
+}
+
+.gift-lid::before {
+  content: "";
+  position: absolute;
+  left: 60px;
+  width: 30px;
+  height: 100%;
+  background: #fff0b0;
+}
+
+.gift-bow {
+  position: absolute;
+  z-index: 3;
+  top: -10px;
+  left: 53px;
+  font-size: 38px;
+}
+
+.gift.opened .gift-lid {
+  transform: translate(-20px, -40px) rotate(-30deg);
+}
+
+@keyframes float {
+  50% { transform: translateY(-12px); }
+}
+
+.hidden { display: none !important; }
+
+.reveal { animation: reveal .8s ease both; }
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 30px auto;
+}
+
+.memory {
+  padding: 22px 12px;
+  border: 1px solid #d4af3730;
+  border-radius: 16px;
+  background: #ffffff05;
+}
+
+.memory .emoji { font-size: 30px; }
+.memory h3 { font-size: 12px; margin: 10px 0; }
+.memory p { font-size: 12px; }
+
+.birthday-cake {
+  font-size: 80px;
+  margin: 25px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.message {
+  white-space: pre-line;
+  text-align: left;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  color: #928a7a;
+  font-size: 11px;
+  letter-spacing: 1px;
+  border-top: 1px solid #d4af3720;
+}
+
+footer span { color: var(--gold); }
+
+@media(max-width: 560px) {
+  .memory-grid { grid-template-columns: 1fr; }
+  .memory { padding: 20px; }
+  section { padding: 70px 18px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+<canvas id="confetti"></canvas>
+
+<button class="music-btn" id="musicBtn" aria-label="Music on or off">♫</button>
+
+<!-- WELCOME -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="eyebrow">A SPECIAL SURPRISE FOR MY BEST FRIEND</div>
+
+    <h1>HAPPY<br>BIRTHDAY</h1>
+    <h2 style="margin-top:18px">Dear Sojib 🖤</h2>
+
+    <div class="divider"></div>
+
+    <p class="subtitle">
+      পৃথিবীতে অনেক মানুষ আসে, আবার হারিয়েও যায়।
+      কিন্তু কিছু বন্ধু থাকে, যাদের জন্য মন থেকে
+      সবসময় ভালো কিছু চাই। তুই তাদেরই একজন! ❤️
+    </p>
+
+    <p class="gold">তোর জন্য ছোট্ট একটা সারপ্রাইজ, Sojib! 🎁</p>
+
+    <button onclick="goTo('birthday')">LET'S START ✨</button>
+
+    <p class="small">19 OCTOBER · YOUR SPECIAL DAY</p>
+    <p class="small">↓ SCROLL TO DISCOVER ↓</p>
+  </div>
+</section>
+
+<!-- BIRTHDAY WISH -->
+<section id="birthday">
+  <div class="container">
+    <div class="eyebrow">CHAPTER 01 · BIRTHDAY WISH</div>
+    <h2>Happy Birthday, Bestie! 🎂</h2>
+
+    <div class="birthday-cake">🎂</div>
+
+    <div class="card">
+      <p>
+        শুভ জন্মদিন, আমার প্রিয় বন্ধু সোজিব! ❤️🥳
+
+        আজকের এই বিশেষ দিনে তোর জন্য রইল
+        মন থেকে অনেক অনেক ভালোবাসা, দোয়া আর শুভকামনা।
+
+        তোর জীবনের প্রতিটি দিন সুন্দর হোক।
+        তোর মুখের হাসিটা সবসময় এমনই থাকুক।
+        তোর সব ভালো স্বপ্ন একদিন সত্যি হোক।
+
+        আল্লাহ তোকে সুস্থ রাখুন, ভালো রাখুন,
+        জীবনে সফলতা দান করুন এবং সব বিপদ থেকে
+        হেফাজত করুন। আমিন। 🤲
+
+        Happy Birthday, Sojib!
+        May your life be filled with happiness,
+        success, peace, and beautiful memories.
+
+        Keep smiling, keep growing, and never stop
+        believing in yourself. You deserve the best! 🖤
+      </p>
+    </div>
+
+    <button class="outline" onclick="goTo('friendship')">
+      NEXT CHAPTER ↓
+    </button>
+  </div>
+</section>
+
+<!-- BEST FRIEND -->
+<section id="friendship">
+  <div class="container">
+    <div class="eyebrow">CHAPTER 02 · OUR FRIENDSHIP</div>
+    <h2>To My Best Friend ❤️</h2>
+
+    <p class="subtitle">
+      কিছু সম্পর্কের সৌন্দর্য বোঝানোর জন্য
+      বড় বড় কথা লাগে না।
+    </p>
+
+    <div class="memory-grid">
+      <div class="memory">
+        <div class="emoji">🤝</div>
+        <h3>TRUE FRIENDSHIP</h3>
+        <p>বন্ধুত্ব মানে হাসি, ভরসা আর একে অপরের ভালো চাওয়া।</p>
+      </div>
+
+      <div class="memory">
+        <div class="emoji">😂</div>
+        <h3>CRAZY MOMENTS</h3>
+        <p>তোর সঙ্গে দুষ্টুমি আর হাসাহাসির হিসাবই আলাদা!</p>
+      </div>
+
+      <div class="memory">
+        <div class="emoji">🤍</div>
+        <h3>GOOD WISHES</h3>
+        <p>তোর জীবনে সবসময় ভালো কিছু আসুক—এই কামনা করি।</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="message">প্রিয় Sojib,
+
+তুই জানিস, বন্ধুত্ব আমার কাছে শুধু একটা শব্দ না।
+বন্ধুত্ব মানে এমন একটা সম্পর্ক, যেখানে একজন আরেকজনের ভালো থাকাটা মন থেকে চায়।
+
+আমি চাই, তুই জীবনে অনেক বড় হ। নিজের স্বপ্নগুলো পূরণ কর। এমন কিছু কর, যাতে একদিন নিজের দিকে তাকিয়ে তুই নিজেই গর্ব করতে পারিস।
+
+জীবনে সবসময় সবকিছু মনের মতো হবে না। কখনো মন খারাপ হবে, কখনো ব্যর্থতা আসবে। কিন্তু তুই যেন কখনো নিজের ওপর বিশ্বাস হারিয়ে না ফেলিস। মনে রাখিস, খারাপ সময় চিরদিন থাকে না।
+
+আর হ্যাঁ, আজ তোর জন্মদিন বলে বেশি ভাব নেওয়ার দরকার নেই! 😂 তুই আজকের Birthday King হলেও কেকের ভাগ কিন্তু আমাকে দিতেই হবে। না দিলে বন্ধুত্বের আদালতে মামলা করে দেব! 🎂🤣
+
+মজা বাদ দিলে, তোর জন্য আমার চাওয়া খুব সাধারণ—তুই ভালো থাক, সুস্থ থাক, নিজের লক্ষ্যে এগিয়ে যা আর সবসময় হাসিখুশি থাক।
+
+আমাদের বন্ধুত্বের সুন্দর মুহূর্তগুলো যেন একদিন অনেক মিষ্টি স্মৃতি হয়ে থাকে।
+
+Happy Birthday, my best friend! 🖤
+
+ইতি,
+তোর Best Friend,
+Sumaiya ❤️</p>
+    </div>
+
+    <button class="outline" onclick="goTo('dua')">
+      ONE MORE THING ↓
+    </button>
+  </div>
+</section>
+
+<!-- DUA -->
+<section id="dua">
+  <div class="container">
+    <div class="eyebrow">CHAPTER 03 · A LITTLE PRAYER</div>
+    <h2>তোর জন্য কিছু দোয়া 🤲</h2>
+
+    <div class="card">
+      <div class="emoji">🌙</div>
+      <p>
+        আল্লাহ তোর জীবনকে সুখ, শান্তি আর বরকতে ভরিয়ে দিন।
+
+        তোর বাবা-মাকে সুস্থ রাখুন এবং তাঁদের মুখে হাসি
+        ফোটানোর তৌফিক দান করুন।
+
+        তোর পড়াশোনা, ভবিষ্যৎ আর জীবনের প্রতিটি ভালো
+        কাজে সফলতা দান করুন।
+
+        তুই যখন কোনো কঠিন সময়ের মধ্যে দিয়ে যাবি,
+        আল্লাহ যেন তোকে ধৈর্য আর শক্তি দেন।
+
+        তোর মনের ভালো ইচ্ছাগুলো পূরণ হোক।
+        তুই সবসময় সঠিক পথে চলিস এবং একজন ভালো মানুষ
+        হিসেবে নিজেকে গড়ে তুলিস।
+
+        <br><br>
+        <span class="gold">আমিন, ইয়া রব্বাল আলামিন। 🤍</span>
+
+        <br><br>
+        May Allah protect you, guide you, and bless
+        your future with happiness and success.
+        Ameen. ❤️
+      </p>
+    </div>
+
+    <button class="outline" onclick="goTo('gift')">
+      OPEN YOUR SURPRISE 🎁
+    </button>
+  </div>
+</section>
+
+<!-- GIFT -->
+<section id="gift">
+  <div class="container">
+    <div class="eyebrow">CHAPTER 04 · YOUR LITTLE GIFT</div>
+    <h2>একটা ছোট্ট উপহার 🎁</h2>
+
+    <p class="subtitle">
+      দামি কিছু না, তোর জন্য নিজের হাতে সাজানো
+      একটা ছোট্ট Birthday Surprise!
+    </p>
+
+    <div class="gift" id="giftBox" role="button"
+      tabindex="0" aria-label="Open gift"
+      onclick="openGift()"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGift()}">
+      <div class="gift-bow">🎀</div>
+      <div class="gift-lid"></div>
+      <div class="gift-base"></div>
+    </div>
+
+    <p id="giftHint" class="gold">TAP THE GIFT TO OPEN IT ✨</p>
+
+    <div id="giftReveal" class="card hidden">
+      <div class="emoji">💌</div>
+      <h2>For You, Sojib!</h2>
+
+      <p>
+        আমার এই ছোট্ট সারপ্রাইজটা তোর কেমন লাগল,
+        সেটা জানি না। তবে এটা বানানোর পেছনে
+        আমার উদ্দেশ্য ছিল তোর মুখে একটু হাসি ফোটানো।
+
+        তোর জন্মদিনে তোকে শুধু একটা Wish করেই
+        শেষ করতে চাইনি। তাই একটু সময় নিয়ে
+        তোর জন্য এই ছোট্ট ওয়েবসাইটটা বানালাম।
+
+        আশা করি, কোনো একদিন এটা দেখে তোর
+        আজকের দিনটার কথা মনে পড়বে আর তুই হাসবি।
+
+        <br><br>
+        <span class="gold">Stay happy, bestie! ❤️</span>
+      </p>
+
+      <button onclick="finalSurprise()">
+        OPEN THE FINAL SURPRISE 🎉
+      </button>
+    </div>
+
+    <div id="finalReveal" class="card hidden">
+      <div class="emoji">🎉🎂🖤</div>
+      <h2>HAPPY BIRTHDAY!</h2>
+
+      <div class="divider"></div>
+
+      <p>
+        SOJIB, তুই সবসময় ভালো থাকিস,
+        তোর মুখে হাসি থাকুক আর জীবনে অনেক
+        সুন্দর সুন্দর মুহূর্ত আসুক।
+
+        <br><br>
+        তোর সব স্বপ্ন পূরণ হোক।
+        আজকের দিনটা অনেক আনন্দে কাটুক।
+
+        <br><br>
+        <span class="gold">YOU ARE A WONDERFUL FRIEND!</span>
+
+        <br><br>
+        With lots of best wishes,<br>
+        <span class="gold">SUMAIYA ❤️</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ENDING -->
+<section id="end">
+  <div class="container">
+    <div class="eyebrow">ONE LAST WISH</div>
+    <h2>Stay Blessed, Sojib! 🤍</h2>
+
+    <div class="card">
+      <p>
+        আরেকবার শুভ জন্মদিন, আমার Best Friend!
+
+        তোর জীবনের নতুন বছরটা সুন্দর হোক।
+        তুই নিজের স্বপ্ন পূরণের পথে এগিয়ে যা,
+        আর কখনো নিজের মূল্য ভুলে যাস না।
+
+        সবসময় হাসিখুশি থাকিস, নিজের যত্ন নিস
+        আর ভালো মানুষ হয়ে বাঁচিস।
+
+        <br><br>
+        <span class="gold">Happy Birthday, Sojib! 🎂</span>
+
+        <br><br>
+        তোর Best Friend,<br>
+        <span class="gold">Sumaiya 🖤</span>
+      </p>
+    </div>
+
+    <button onclick="celebrate()">CELEBRATE AGAIN 🎊</button>
+    <p class="small">THIS LITTLE SURPRISE WAS MADE JUST FOR YOU</p>
+  </div>
+</section>
+
+<footer>
+  Made with love & friendship ♥
+  <br><br>
+  <span>CRAFTED BY SUMAIYA</span>
+</footer>
+
+<script>
+/* Smooth scrolling */
+function goTo(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
+
+/* Golden stars */
+const starCanvas = document.getElementById('stars');
+const sctx = starCanvas.getContext('2d');
+let stars = [];
+
+function resizeStars() {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+
+  starCanvas.width = innerWidth * dpr;
+  starCanvas.height = innerHeight * dpr;
+  starCanvas.style.width = innerWidth + 'px';
+  starCanvas.style.height = innerHeight + 'px';
+
+  sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  stars = Array.from({
+    length: Math.min(100, Math.floor(innerWidth / 4))
+  }, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.4 + .3,
+    phase: Math.random() * 6
+  }));
+}
+
+function drawStars() {
+  sctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  stars.forEach(s => {
+    s.phase += .025;
+    sctx.beginPath();
+    sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    sctx.fillStyle =
+      `rgba(232,199,106,${.2 + (Math.sin(s.phase)+1)*.3})`;
+    sctx.fill();
+  });
+
+  requestAnimationFrame(drawStars);
+}
+
+window.addEventListener('resize', resizeStars);
+resizeStars();
+drawStars();
+
+/* Confetti */
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+let pieces = [];
+let confettiRunning = false;
+
+function resizeConfetti() {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  canvas.style.width = innerWidth + 'px';
+  canvas.style.height = innerHeight + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener('resize', resizeConfetti);
+resizeConfetti();
+
+function celebrate() {
+  pieces = Array.from({length: 140}, () => ({
+    x: Math.random() * innerWidth,
+    y: -Math.random() * innerHeight,
+    size: Math.random() * 5 + 3,
+    speed: Math.random() * 3 + 2,
+    drift: (Math.random() - .5) * 2,
+    angle: Math.random() * 6,
+    spin: (Math.random() - .5) * .12,
+    color: ['#e8c76a','#fff0b0','#ffffff','#bd9634'][
+      Math.floor(Math.random() * 4)
+    ]
+  }));
+
+  if (!confettiRunning) {
+    confettiRunning = true;
+    requestAnimationFrame(drawConfetti);
+  }
+}
+
+function drawConfetti() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  pieces.forEach(p => {
+    p.y += p.speed;
+    p.x += p.drift;
+    p.angle += p.spin;
+
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.angle);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*1.5);
+    ctx.restore();
+  });
+
+  pieces = pieces.filter(p => p.y < innerHeight + 20);
+
+  if (pieces.length) {
+    requestAnimationFrame(drawConfetti);
+  } else {
+    confettiRunning = false;
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+  }
+}
+
+/* Gift opening */
+let giftOpened = false;
+let finalOpened = false;
+
+function openGift() {
+  if (giftOpened) return;
+  giftOpened = true;
+
+  document.getElementById('giftBox').classList.add('opened');
+  document.getElementById('giftHint').textContent =
+    'SURPRISE! THIS IS JUST FOR YOU ❤️';
+
+  const box = document.getElementById('giftReveal');
+  box.classList.remove('hidden');
+  box.classList.add('reveal');
+
+  celebrate();
+
+  setTimeout(() => {
+    box.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 250);
+}
+
+function finalSurprise() {
+  if (finalOpened) return;
+  finalOpened = true;
+
+  const box = document.getElementById('finalReveal');
+  box.classList.remove('hidden');
+  box.classList.add('reveal');
+
+  celebrate();
+
+  setTimeout(() => {
+    box.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 250);
+}
+
+/* Original gentle melody generated by the browser */
+let audioCtx = null;
+let masterGain = null;
+let musicTimer = null;
+let musicOn = false;
+let noteIndex = 0;
+
+const melody = [
+  [261.63,329.63,392],
+  [293.66,349.23,440],
+  [261.63,329.63,392],
+  [220,293.66,349.23],
+  [246.94,329.63,392],
+  [293.66,369.99,440],
+  [261.63,329.63,392],
+  [220,261.63,329.63]
+];
+
+function playChord() {
+  if (!musicOn || !audioCtx) return;
+
+  const chord = melody[noteIndex++ % melody.length];
+
+  chord.forEach((freq, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+
+    gain.gain.setValueAtTime(.0001, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(
+      i === 0 ? .035 : .018, audioCtx.currentTime + .15
+    );
+    gain.gain.exponentialRampToValueAtTime(
+      .0001, audioCtx.currentTime + 1.4
+    );
+
+    osc.connect(gain);
+    gain.connect(masterGain);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 1.45);
+  });
+}
+
+async function toggleMusic() {
+  const btn = document.getElementById('musicBtn');
+
+  if (musicOn) {
+    musicOn = false;
+    clearInterval(musicTimer);
+    musicTimer = null;
+    btn.textContent = '♫';
+
+    if (audioCtx && masterGain) {
+      masterGain.gain.setTargetAtTime(
+        0, audioCtx.currentTime, .05
+      );
+    }
+    return;
+  }
+
+  try {
+    if (!audioCtx) {
+      const AudioClass =
+        window.AudioContext || window.webkitAudioContext;
+
+      if (!AudioClass) {
+        alert('Your browser does not support music.');
+        return;
+      }
+
+      audioCtx = new AudioClass();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = .7;
+      masterGain.connect(audioCtx.destination);
+    }
+
+    await audioCtx.resume();
+
+    masterGain.gain.setTargetAtTime(
+      .7, audioCtx.currentTime, .05
+    );
+
+    musicOn = true;
+    btn.textContent = '♫';
+
+    playChord();
+    musicTimer = setInterval(playChord, 1500);
+  } catch (e) {
+    alert('Music could not start. Please try again.');
+  }
+}
+
+document.getElementById('musicBtn')
+  .addEventListener('click', toggleMusic);
+</script>
+
+</body>
+  </html>
